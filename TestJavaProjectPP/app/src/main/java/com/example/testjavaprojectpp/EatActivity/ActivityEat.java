@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 
 import com.example.testjavaprojectpp.R;
 import com.example.testjavaprojectpp.Recipes;
 import com.example.testjavaprojectpp.RecyclerViewAdapter;
+import com.example.testjavaprojectpp.SecondActivity;
 import com.example.testjavaprojectpp.sqlitedb.DatabaseHelper;
 import com.example.testjavaprojectpp.sqlitedb.RecipeModel;
 
@@ -18,8 +19,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import static com.example.testjavaprojectpp.SecondActivity.nameCategory;
 
-public class SaladsActivity extends AppCompatActivity {
+public class ActivityEat extends AppCompatActivity {
 
     RecyclerView myrecyclerView;
     RecyclerViewAdapter myAdapter;
@@ -28,14 +30,15 @@ public class SaladsActivity extends AppCompatActivity {
 
     SearchView sv;
 
+    public String category = nameCategory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
+        //ПОИСК
         sv = findViewById(R.id.search);
         sv.clearFocus();
-
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -44,17 +47,18 @@ public class SaladsActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filterList(newText);
+                String[] s = newText.split("[ ,;'.~:/*!?]");
+                filterList(s);
                 return false;
             }
         });
 
         recipes1 = new ArrayList<>();
-        updateRecipes("Салаты");
+        System.out.println(category);
+        updateRecipes(category);
         CustomComparatorLetters csl = new CustomComparatorLetters();
         Collections.sort(recipes1,csl);
         updateActivity(recipes1);
-
     }
 
     public void setFilteredList(List<Recipes> filteredList){
@@ -62,14 +66,24 @@ public class SaladsActivity extends AppCompatActivity {
         myAdapter.notifyDataSetChanged();
     }
 
-    private void filterList(String s){
+    private void filterList(String[] s){
         List<Recipes> filteredList = new ArrayList<>();
+
         for (Recipes item : recipes1){
-            if (item.getRecipeName().toLowerCase().contains(s.toLowerCase())){
-                filteredList.add(item);
+            int count = 0;
+            for (String str : s){
+                if (item.getRecipeIngredients().toLowerCase().contains(str.toLowerCase())){
+                    count++;
+                    if (count == s.length){
+                        filteredList.add(item);
+                    }
+                }
+                else if (item.getRecipeName().toLowerCase().contains(s[0].toLowerCase())){
+                    filteredList.add(item);
+                }
             }
         }
-        if (filteredList.isEmpty()){
+        if (filteredList.isEmpty() || s[0].matches("[-+]?\\d+")){
             Toast.makeText(this, "Нет такого рецепта :(", Toast.LENGTH_SHORT).show();
             updateActivity(new ArrayList<Recipes>());
         }
@@ -90,7 +104,7 @@ public class SaladsActivity extends AppCompatActivity {
 
     void updateRecipes(String category){
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(SaladsActivity.this);
+        DatabaseHelper databaseHelper = new DatabaseHelper(ActivityEat.this);
         List<RecipeModel> everyone = databaseHelper.getEveryone(category);
 
         //Toast.makeText(SoupActivity.this,everyone.toString(), Toast.LENGTH_SHORT).show();
@@ -98,20 +112,20 @@ public class SaladsActivity extends AppCompatActivity {
         for (int i = 0; i < everyone.size();i++){
 
             String name= everyone.get(i).getImageName();
-            int id = getResources().getIdentifier(name, "drawable",getPackageName());
+            int id = getResources().getIdentifier(name, "drawable", getPackageName());
 
             recipes1.add(new Recipes(everyone.get(i).getRecipeName(),
                     everyone.get(i).getRecipeIngredients().replace(";","\n"),
                     "Метод",
-                    everyone.get(i).getRecipe(),id));
+                    everyone.get(i).getRecipe().replace(";","\n"),id));
         }
     }
-    private class CustomComparatorLetters implements Comparator<Recipes> {
+
+    private class CustomComparatorLetters implements Comparator<Recipes>{
 
         @Override
         public int compare(Recipes recipes, Recipes t1) {
             return recipes.getRecipeName().compareTo(t1.getRecipeName());
         }
     }
-
 }

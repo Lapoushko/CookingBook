@@ -8,7 +8,7 @@
     android:background="@drawable/backgroundmenu"
     >
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_soup"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -20,7 +20,7 @@
         android:onClick="clickSoups"
         android:text="СУПЫ"
         android:textColor="@color/white"
-        android:textSize="10dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.573" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_snacks"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -40,7 +40,7 @@
         android:onClick="clickSnacks"
         android:text="ЗАКУСКИ"
         android:textColor="@color/white"
-        android:textSize="9dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.342"
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.702" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sauce"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -60,7 +60,7 @@
         android:onClick="clickSauce"
             android:text="СОУСЫ"
         android:textColor="@color/white"
-        android:textSize="10dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.922"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.571" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_pizza"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -80,14 +80,15 @@
         android:onClick="clickPizza"
         android:text="ПИЦЦА"
         android:textColor="@color/white"
-        android:textSize="10dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.701" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_garnish"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -99,7 +100,7 @@
         android:onClick="clickGarnish"
         android:text="ГОРЯЧЕЕ"
         android:textColor="@color/white"
-        android:textSize="10dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
@@ -107,7 +108,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.398" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_salad"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -119,7 +120,7 @@
         android:onClick="clickSalads"
         android:text="САЛАТЫ"
         android:textColor="@color/white"
-        android:textSize="10dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.922"
@@ -127,7 +128,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.397" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_drinks"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -139,15 +140,15 @@
         android:onClick="clickDrinks"
         android:text="НАПИТКИ"
         android:textColor="@color/white"
-        android:textSize="8dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.699"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.703" />
+        app:layout_constraintVertical_bias="0.47" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_desert"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -159,7 +160,7 @@
         android:onClick="clickDesert"
         android:text="ДЕСЕРТЫ"
         android:textColor="@color/white"
-        android:textSize="9dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.699"
@@ -167,7 +168,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.232" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_breakfast"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="75dp"
@@ -179,7 +180,7 @@
         android:onClick="clickBreakfast"
         android:text="ЗАВТРАКИ"
         android:textColor="@color/white"
-        android:textSize="8dp"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.342"

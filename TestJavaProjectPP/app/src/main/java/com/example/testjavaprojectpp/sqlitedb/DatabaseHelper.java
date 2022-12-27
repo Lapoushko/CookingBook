@@ -10,6 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,11 +28,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CATEGORY = "CATEGORY";
     public static final String IMAGE_NAME = "IMAGE_NAME";
     private static String DB_NAME = "RecipeDB.db";
-
+    private static String DB_PATH = "";
+    private final Context mContext;
 
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "RecipeDB.db", null, 2);
+        if (android.os.Build.VERSION.SDK_INT >= 17)
+            DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
+        else
+            DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
+        this.mContext = context;
+
+        copyDataBase();
+
+        this.getReadableDatabase();
     }
 
     @Override
@@ -92,5 +106,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return returnList;
+    }
+
+    private void copyDBFile() throws IOException {
+        InputStream mInput = mContext.getAssets().open(DB_NAME);
+        OutputStream mOutput = new FileOutputStream(DB_PATH + DB_NAME);
+        byte[] mBuffer = new byte[1024];
+        int mLength;
+        while ((mLength = mInput.read(mBuffer)) > 0)
+            mOutput.write(mBuffer, 0, mLength);
+        mOutput.flush();
+        mOutput.close();
+        mInput.close();
+    }
+    private void copyDataBase() {
+        if (!checkDataBase()) {
+            this.getReadableDatabase();
+            this.close();
+            try {
+                copyDBFile();
+            } catch (IOException mIOException) {
+                throw new Error("ErrorCopyingDataBase");
+            }
+        }
+    }
+    private boolean checkDataBase() {
+        File dbFile = new File(DB_PATH + DB_NAME);
+        return dbFile.exists();
     }
 }

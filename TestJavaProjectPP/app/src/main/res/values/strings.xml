@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">POVAR</string>
     <string name="logo">Hello my cook!</string>
     <string name="title_activity_navigation_drawer">navigationDrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
