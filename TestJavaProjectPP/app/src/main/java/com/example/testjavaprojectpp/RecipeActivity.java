@@ -1,11 +1,16 @@
 package com.example.testjavaprojectpp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class RecipeActivity extends AppCompatActivity {
@@ -20,6 +25,12 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        LinearLayout constraintLayout = findViewById(R.id.activity_recipe);
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
 
         mRecipeName = (TextView)findViewById(R.id.text_recipe);
         mRecipeIngredients = (TextView)findViewById(R.id.ingredients);
@@ -39,5 +50,13 @@ public class RecipeActivity extends AppCompatActivity {
         mRecipeMethodTitle.setText(MethodTitle);
         mRecipe.setText(Recipe);
         mImage.setImageResource(RecipeImage);
+
+        ImageButton back = (ImageButton)findViewById(R.id.backward_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 }

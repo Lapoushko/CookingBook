@@ -1,9 +1,14 @@
 package com.example.testjavaprojectpp.EatActivity;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
@@ -36,6 +41,21 @@ public class ActivityEat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        LinearLayout constraintLayout = findViewById(R.id.activity_main_2);
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
+
+        ImageButton back = (ImageButton)findViewById(R.id.backward_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         //ПОИСК
         sv = findViewById(R.id.search);
         sv.clearFocus();
@@ -48,6 +68,9 @@ public class ActivityEat extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 String[] s = newText.split("[ ,;'.~:/*!?]");
+                if (newText.contains(" и ") || newText.contains(" или ")){
+                    s = newText.split(" и ");
+                }
                 filterList(s);
                 return false;
             }

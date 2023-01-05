@@ -1,21 +1,58 @@
 package com.example.testjavaprojectpp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.widget.TextView;
 
 import com.example.testjavaprojectpp.EatActivity.ActivityEat;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity {
 
     public static String nameCategory ="";
 
+    TextView tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        ConstraintLayout constraintLayout = findViewById(R.id.second_layout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+        tv = (TextView) findViewById(R.id.author_text);
+        String[] arrayStr = {
+                "Рецепты не работают, если вы не используете свое сердце. \n ©Дилан Джонс",
+               "Хороший повар похож на волшебницу, которая раздает счастье. \n ©Эльза Скиапарелли.",
+               "Вы то, что вы едите, так что ешьте хорошо. \n ©Шеф-повар Франческо.",
+                "Кухня жесткая и формирует невероятно сильных персонажей. \n ©Гордон Рэмси",
+                "Рецепт не имеет души. Вы, как повар, должны добавить свою душу в рецепт. \n ©Томас Келлер.",
+                "Наслаждение блюдом должно быть незабываемым. \n ©Ален Дюкасс.",
+                "Еда - один из самых важных аспектов жизни. \n ©Марко Пьер Уайт.",
+                "Приготовление пищи - это как рисование или написание песни. \n ©Вольфганг Па",
+                "Иногда в самые глубокие моменты нет слов. Есть только еда. \n ©Рой Чой",
+                "Повара являются лидерами в своем маленьком мире. \n ©Эрик Риперт",
+                "С едой можно играть. \n ©Эмерил Лагассе",
+                "Если бы Бог хотел, чтобы мы следовали рецептам, он не дал бы нам бабушек. \n ©Линда Хенли",
+                "Лучшие блюда самые простые. \n ©Аугуст Эскофье"
+
+        };
+        Random r = new Random();
+        String textAuthor = arrayStr[r.nextInt(arrayStr.length)];
+        Typewriter writer = new Typewriter(tv);
+        writer.animateText(textAuthor);
 //        Button btn_add = findViewById(R.id.btnTestBd);
 //        Button btn_add_read = findViewById(R.id.btnTestRead);
 //
@@ -91,5 +128,39 @@ public class SecondActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+    }
+
+    public class Typewriter {
+
+        private String sText = new String();
+        private int index;
+        private long mDelay = 50;
+
+        TextView textView;
+
+        public Typewriter(TextView tView) {
+            textView = tView;
+        }
+
+        public void animateText(String string) {
+            sText = string;
+            index = 0;
+
+            textView.setText("");
+
+            new Handler().removeCallbacks(characterAdder);
+            new Handler().postDelayed(characterAdder, mDelay);
+        }
+
+        private Runnable characterAdder = new Runnable() {
+            @Override
+            public void run() {
+                textView.setText(sText.subSequence(0, index++));
+
+                if (index <= sText.length()) {
+                    new Handler().postDelayed(characterAdder, mDelay);
+                }
+            }
+        };
     }
 }

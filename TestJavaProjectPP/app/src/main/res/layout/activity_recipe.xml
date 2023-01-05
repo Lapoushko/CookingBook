@@ -4,19 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecipeActivity">
+    android:id="@+id/activity_recipe"
+    tools:context=".RecipeActivity"
+    android:background="@drawable/anim_gradient_list">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        android:backgroundTint="#DCDCDC"
-        android:backgroundTintMode="multiply"
-        android:background="@drawable/gradient_background">
+
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/backward_button"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/backward_button">
+
+            </ImageButton>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/recipe_img_id"
@@ -38,7 +49,7 @@
                 android:fontFamily="@font/gloty_medium"
                 android:text="@string/recipeName"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -50,7 +61,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/gloty_medium"
                 android:text="@string/ingredients"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <TextView
@@ -61,7 +72,7 @@
                 android:fontFamily="@font/gloty_medium"
                 android:text="@string/recipeName"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -73,7 +84,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/gloty_medium"
                 android:text="@string/ingredients"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
 
