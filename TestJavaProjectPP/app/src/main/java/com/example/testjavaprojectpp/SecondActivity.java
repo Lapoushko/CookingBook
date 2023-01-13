@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -125,6 +126,12 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent2 = new Intent(SecondActivity.this, ActivityEat.class);
         nameCategory = "Завтрак";
         startActivity(intent2);
+    }
+
+    public void clickPrivacyPolicy(View view){
+        Intent openURL = new Intent(android.content.Intent.ACTION_VIEW);
+        openURL.setData(Uri.parse("https://github.com/Lapoushko/CookingBook/blob/main/TestJavaProjectPP/Privacy%20policy.txt"));
+        startActivity(openURL);
     }
     @Override
     public void onBackPressed() {
