@@ -12,7 +12,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_pizza"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -32,7 +32,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_drinks"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -52,7 +52,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_snacks"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -72,7 +72,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_breakfast"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -92,7 +92,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_desert"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -112,7 +112,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_salad"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -132,7 +132,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_soup"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -152,7 +152,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_garnish"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
@@ -172,7 +172,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sauce"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="85dp"
+        android:layout_width="88dp"
         android:layout_height="88dp"
         android:width="200dp"
         android:height="120dp"
