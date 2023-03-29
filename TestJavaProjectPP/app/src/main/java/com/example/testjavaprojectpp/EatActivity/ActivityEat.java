@@ -68,10 +68,18 @@ public class ActivityEat extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 String[] s = newText.split("[ ,;'.~:/*!?]");
-                if (newText.contains(" и ") || newText.contains(" или ")){
+                if (newText.contains(" и ")){
                     s = newText.split(" и ");
+                    filterList(s,false);
                 }
-                filterList(s);
+                else if(newText.contains(" или ")){
+                    s = newText.split(" или ");
+                    filterList(s,true);
+                }
+                else{
+                    filterList(s,false);
+                }
+
                 return false;
             }
         });
@@ -89,7 +97,8 @@ public class ActivityEat extends AppCompatActivity {
         myAdapter.notifyDataSetChanged();
     }
 
-    private void filterList(String[] s){
+    private void filterList(String[] s, boolean isOr){
+        //s - список ингредиентов, isOr - является ли поиск по "или"
         List<Recipes> filteredList = new ArrayList<>();
 
         for (Recipes item : recipes1){
@@ -97,17 +106,26 @@ public class ActivityEat extends AppCompatActivity {
             for (String str : s){
                 if (item.getRecipeIngredients().toLowerCase().contains(str.toLowerCase())){
                     count++;
-                    if (count == s.length){
-                        filteredList.add(item);
+                    if (count == s.length && !isOr){
+                        if (!filteredList.contains(item)){
+                            filteredList.add(item);
+                        }
+                    }
+                    else if(isOr){
+                        if (!filteredList.contains(item)){
+                            filteredList.add(item);
+                        }
                     }
                 }
                 else if (item.getRecipeName().toLowerCase().contains(s[0].toLowerCase())){
-                    filteredList.add(item);
+                    if (!filteredList.contains(item)){
+                        filteredList.add(item);
+                    }
                 }
             }
         }
         if (filteredList.isEmpty() || s[0].matches("[-+]?\\d+")){
-            Toast.makeText(this, "Нет такого рецепта :(", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Нет такого рецепта :(", Toast.LENGTH_SHORT).show();
             updateActivity(new ArrayList<Recipes>());
         }
         else{
