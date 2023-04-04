@@ -54,7 +54,6 @@ public class SecondActivity extends AppCompatActivity {
         String textAuthor = arrayStr[r.nextInt(arrayStr.length)];
         Typewriter writer = new Typewriter(tv);
         writer.animateText(textAuthor);
-        
 //        Button btn_add = findViewById(R.id.btnTestBd);
 //        Button btn_add_read = findViewById(R.id.btnTestRead);
 //
