@@ -146,7 +146,11 @@ public class ActivityEat extends AppCompatActivity {
     void updateRecipes(String category){
 
         DatabaseHelper databaseHelper = new DatabaseHelper(ActivityEat.this);
-        List<RecipeModel> everyone = databaseHelper.getEveryone(category);
+        List<RecipeModel> everyone = databaseHelper.getAll();
+        if (category != "everyone"){
+            everyone = databaseHelper.getEveryone(category);
+        }
+
 
         //Toast.makeText(SoupActivity.this,everyone.toString(), Toast.LENGTH_SHORT).show();
 

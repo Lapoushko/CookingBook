@@ -98,9 +98,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
 
                 RecipeModel recipeModel = new RecipeModel(recipeID, recipeName, recipeIngredients, recipe, category, imageName);
-                if (recipeModel.getCategory().equals(categoryRecipe)) {
+                if (recipeModel.getCategory().equals(categoryRecipe)){
                     returnList.add(recipeModel);
                 }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    public List<RecipeModel> getAll() {
+        List<RecipeModel> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + RECIPES_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int recipeID = cursor.getInt(0);
+                String recipeName = cursor.getString(1);
+                String recipeIngredients = cursor.getString(2);
+                String recipe = cursor.getString(3);
+                String category = cursor.getString(4);
+                String imageName = "";
+                if (cursor.getString(5).contains(".")) {
+                    imageName = cursor.getString(5).substring(0, cursor.getString(5).indexOf('.'));
+                } else {
+                    imageName = cursor.getString(5);
+                }
+
+                RecipeModel recipeModel = new RecipeModel(recipeID, recipeName, recipeIngredients, recipe, category, imageName);
+                returnList.add(recipeModel);
             } while (cursor.moveToNext());
         }
         cursor.close();

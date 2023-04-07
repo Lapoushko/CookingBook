@@ -1,6 +1,7 @@
 package com.example.testjavaprojectpp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.testjavaprojectpp.EatActivity.ActivityEat;
 
@@ -54,6 +56,18 @@ public class SecondActivity extends AppCompatActivity {
         String textAuthor = arrayStr[r.nextInt(arrayStr.length)];
         Typewriter writer = new Typewriter(tv);
         writer.animateText(textAuthor);
+
+        SearchView sv = (SearchView) findViewById(R.id.searcher);
+
+        sv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(SecondActivity.this, ActivityEat.class);
+                nameCategory = "everyone";
+                startActivity(intent2);
+
+            }
+        });
 //        Button btn_add = findViewById(R.id.btnTestBd);
 //        Button btn_add_read = findViewById(R.id.btnTestRead);
 //
@@ -170,4 +184,5 @@ public class SecondActivity extends AppCompatActivity {
             }
         };
     }
+
 }
