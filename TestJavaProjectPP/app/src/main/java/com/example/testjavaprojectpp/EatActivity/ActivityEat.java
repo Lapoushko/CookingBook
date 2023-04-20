@@ -1,22 +1,21 @@
 package com.example.testjavaprojectpp.EatActivity;
 
+import static com.example.testjavaprojectpp.SecondActivity.nameCategory;
+
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.SearchView;
 
 import com.example.testjavaprojectpp.R;
 import com.example.testjavaprojectpp.Recipes;
 import com.example.testjavaprojectpp.RecyclerViewAdapter;
-import com.example.testjavaprojectpp.SecondActivity;
 import com.example.testjavaprojectpp.sqlitedb.DatabaseHelper;
 import com.example.testjavaprojectpp.sqlitedb.RecipeModel;
 
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import static com.example.testjavaprojectpp.SecondActivity.nameCategory;
 
 public class ActivityEat extends AppCompatActivity {
 

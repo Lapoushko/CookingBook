@@ -1,16 +1,16 @@
 package com.example.testjavaprojectpp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
+import android.app.Application;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(5000);
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
-
-
 
         Thread thread = new Thread() {
             @Override

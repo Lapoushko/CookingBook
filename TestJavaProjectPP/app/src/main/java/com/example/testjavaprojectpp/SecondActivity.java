@@ -137,7 +137,7 @@ public class SecondActivity extends AppCompatActivity {
         startActivity(intent2);
     }
     public void clickBreakfast(View view){
-        Intent intent2 = new Intent(SecondActivity.this, ActivityEat.class);
+        Intent intent2 = new Intent(SecondActivity.this, TestImage.class);
         nameCategory = "Завтрак";
         startActivity(intent2);
     }
