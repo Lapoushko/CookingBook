@@ -31,10 +31,10 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         ConstraintLayout constraintLayout = findViewById(R.id.second_layout);
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2000);
-        animationDrawable.setExitFadeDuration(4000);
-        animationDrawable.start();
+//        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+//        animationDrawable.setEnterFadeDuration(2000);
+//        animationDrawable.setExitFadeDuration(4000);
+//        animationDrawable.start();
         tv = (TextView) findViewById(R.id.author_text);
         String[] arrayStr = {
                 "Рецепты не работают, если вы не используете свое сердце. \n ©Дилан Джонс",

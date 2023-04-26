@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    final int MENU_ANIM = 1;
+//    final int MENU_ANIM = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         btn.startAnimation(anim);
 
         ConstraintLayout constraintLayout = findViewById(R.id.main_layout);
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(4000);
-        animationDrawable.start();
+//        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+//        animationDrawable.setEnterFadeDuration(5000);
+//        animationDrawable.setExitFadeDuration(4000);
+//        animationDrawable.start();
 
         Thread thread = new Thread() {
             @Override
