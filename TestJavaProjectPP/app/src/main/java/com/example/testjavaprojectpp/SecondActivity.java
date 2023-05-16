@@ -65,7 +65,6 @@ public class SecondActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(SecondActivity.this, ActivityEat.class);
                 nameCategory = "everyone";
                 startActivity(intent2);
-
             }
         });
 //        Button btn_add = findViewById(R.id.btnTestBd);

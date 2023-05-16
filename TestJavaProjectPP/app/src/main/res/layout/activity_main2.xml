@@ -8,26 +8,28 @@
     android:orientation="vertical"
     android:id="@+id/activity_main_2"
 
-    android:background="@drawable/anim_gradient_list"
+    android:background="@color/white"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp">
+
         <ImageButton
             android:id="@+id/backward_button"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/backward_button">
-
-        </ImageButton>
+            android:layout_width="17dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="17dp"
+            android:background="@drawable/backward_button"></ImageButton>
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
             android:layout_width="289dp"
             android:layout_height="wrap_content"
+
 
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -39,11 +41,9 @@
             android:background="@drawable/search_view_bg"
             app:actionViewClass="androidx.appcompat.widget.SearchView"
             app:iconifiedByDefault="false"
-            app:queryHint="Ищи рецепт..." />
+            app:queryHint="Ищи рецепт..."
+            android:theme="@style/appSearchView"/>
     </RelativeLayout>
-
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -52,6 +52,7 @@
         android:clipChildren="false"
         android:clipToPadding="true"
         android:scrollbars="vertical"
+        android:layout_gravity="center_vertical"
         >
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

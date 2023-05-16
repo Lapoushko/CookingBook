@@ -26,11 +26,11 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
 
-        LinearLayout constraintLayout = findViewById(R.id.activity_recipe);
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
+//        LinearLayout constraintLayout = findViewById(R.id.activity_recipe);
+////        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+////        animationDrawable.setEnterFadeDuration(2000);
+////        animationDrawable.setExitFadeDuration(2000);
+////        animationDrawable.start();
 
         mRecipeName = (TextView)findViewById(R.id.text_recipe);
         mRecipeIngredients = (TextView)findViewById(R.id.ingredients);

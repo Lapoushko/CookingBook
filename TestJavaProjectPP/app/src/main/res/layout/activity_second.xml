@@ -8,26 +8,199 @@
     android:background="@color/white"
     tools:context=".SecondActivity">
 
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
+    <!--        android:id="@+id/politics"-->
+    <!--        style="@style/Widget.AppCompat.Button"-->
+    <!--        android:layout_width="105dp"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:width="200dp"-->
+    <!--        android:height="120dp"-->
+    <!--        android:background="@drawable/roundedbutton"-->
+    <!--        android:fontFamily="@font/gloty_medium"-->
+    <!--        android:onClick="clickPrivacyPolicy"-->
+    <!--        android:text="Privacy Policy"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="10sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.085"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.979"-->
+    <!--        app:shapeAppearanceOverlay="@style/roundImageViewRecipeActivity" />-->
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searcher"
-        android:layout_width="360dp"
-        android:layout_height="48dp"
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="460dp"
+        android:layout_marginHorizontal="20dp"
         android:background="@drawable/search_view_bg"
-
         android:visibility="visible"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:iconifiedByDefault="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:queryHint="Ищи рецепт...">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.346"
+        app:queryHint="Ищи рецепт..."
+        tools:visibility="visible" />
 
-    </androidx.appcompat.widget.SearchView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_drinks"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:width="200dp"
+        android:height="120dp"
+        android:background="@drawable/drink"
+        android:fontFamily="@font/gloty_medium"
+        android:onClick="clickDrinks"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_snacks"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:width="200dp"
+        android:height="120dp"
+        android:background="@drawable/snacks"
+        android:fontFamily="@font/gloty_medium"
+        android:onClick="clickSnacks"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.728" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_breakfast"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="2dp"
+        android:width="200dp"
+        android:height="120dp"
+        android:background="@drawable/for_breakfast"
+        android:fontFamily="@font/gloty_medium"
+        android:onClick="clickBreakfast"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_desert"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:width="200dp"
+        android:height="120dp"
+        android:background="@drawable/dessert"
+        android:fontFamily="@font/gloty_medium"
+        android:onClick="clickDesert"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_soup"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="2dp"
+        android:width="200dp"
+        android:height="120dp"
+        android:background="@drawable/soups"
+        android:fontFamily="@font/gloty_medium"
+        android:onClick="clickSoups"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+    <!--        <TextView-->
+<!--        android:id="@+id/author_text"-->
+<!--        android:layout_width="285dp"-->
+<!--        android:layout_height="74dp"-->
+<!--        android:fontFamily="@font/inter_light"-->
+<!--        android:text="Рецепты не работают, если вы не используете свое сердце.-->
+<!--         ©Дилан Джонс"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="15sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.175" />-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_garnish"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:width="200dp"
+        android:height="120dp"
+        android:background="@drawable/hot_dishes"
+        android:fontFamily="@font/gloty_medium"
+        android:onClick="clickGarnish"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_sauce"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="2dp"
+        android:width="200dp"
+        android:height="120dp"
+        android:background="@drawable/sauces"
+        android:fontFamily="@font/gloty_medium"
+        android:onClick="clickSauce"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_pizza"
@@ -48,104 +221,7 @@
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_drinks"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:width="200dp"
-        android:height="120dp"
-        android:background="@drawable/drink"
-        android:fontFamily="@font/gloty_medium"
-        android:onClick="clickDrinks"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_snacks"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:width="200dp"
-        android:height="120dp"
-        android:background="@drawable/snacks"
-        android:fontFamily="@font/gloty_medium"
-        android:onClick="clickSnacks"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_breakfast"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="2dp"
-        android:width="200dp"
-        android:height="120dp"
-        android:background="@drawable/for_breakfast"
-        android:fontFamily="@font/gloty_medium"
-        android:onClick="clickBreakfast"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491" />
-
-    <!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/politics"-->
-<!--        style="@style/Widget.AppCompat.Button"-->
-<!--        android:layout_width="105dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:width="200dp"-->
-<!--        android:height="120dp"-->
-<!--        android:background="@drawable/roundedbutton"-->
-<!--        android:fontFamily="@font/gloty_medium"-->
-<!--        android:onClick="clickPrivacyPolicy"-->
-<!--        android:text="Privacy Policy"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="10sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.085"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.979"-->
-<!--        app:shapeAppearanceOverlay="@style/roundImageViewRecipeActivity" />-->
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_desert"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:width="200dp"
-        android:height="120dp"
-        android:background="@drawable/dessert"
-        android:fontFamily="@font/gloty_medium"
-        android:onClick="clickDesert"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_salad"
@@ -164,103 +240,87 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_soup"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="2dp"
-        android:width="200dp"
-        android:height="120dp"
-        android:background="@drawable/soups"
-        android:fontFamily="@font/gloty_medium"
-        android:onClick="clickSoups"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_garnish"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:width="200dp"
-        android:height="120dp"
-        android:background="@drawable/hot_dishes"
-        android:fontFamily="@font/gloty_medium"
-        android:onClick="clickGarnish"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_sauce"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="2dp"
-        android:width="200dp"
-        android:height="120dp"
-        android:background="@drawable/sauces"
-        android:fontFamily="@font/gloty_medium"
-        android:onClick="clickSauce"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <TextView
         android:id="@+id/text_change_category"
-        android:layout_width="334dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="32dp"
         android:fontFamily="@font/glory_bold"
-        android:text="ВЫБЕРИТЕ КАТЕГОРИЮ БЛЮДА"
+        android:lineSpacingExtra="8sp"
+        android:text="ВЫБЕРИТЕ КАТЕГОРИЮ\nБЛЮДА"
         android:textAlignment="viewStart"
         android:textColor="@color/pink"
-        android:textSize="25sp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561" />
 
-    <TextView
-        android:id="@+id/author_text"
-        android:layout_width="370dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/fon_one"
-        android:fontFamily="@font/inter_light"
-        android:text="Рецепты не работают, если вы не используете свое сердце.
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="70dp"
+        android:clickable="true"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13"
+        tools:layout_editor_absoluteX="-4dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/pink"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/author_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/inter_light"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="0sp"
+                android:text="Рецепты не работают, если вы не используете свое сердце.
          ©Дилан Джонс"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_change_category" />
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.175" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="319dp"-->
+<!--        android:layout_height="62dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginTop="-1dp"-->
+<!--        android:background="@color/pink"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        android:theme="?attr/actionBarTheme"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.512"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.194"-->
+<!--        app:shapeAppearanceOverlay="@style/roundedMenuPanel">-->
+
+<!--    </com.google.android.material.imageview.ShapeableImageView>-->
+
 
     <!--        <Button-->
     <!--        android:id="@+id/btnTestBd"-->

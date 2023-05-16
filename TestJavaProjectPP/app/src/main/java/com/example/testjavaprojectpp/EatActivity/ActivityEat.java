@@ -2,8 +2,9 @@ package com.example.testjavaprojectpp.EatActivity;
 
 import static com.example.testjavaprojectpp.SecondActivity.nameCategory;
 
-import android.graphics.drawable.AnimationDrawable;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class ActivityEat extends AppCompatActivity {
 
-    RecyclerView myrecyclerView;
+    RecyclerView mRecyclerView;
     RecyclerViewAdapter myAdapter;
 
     List<Recipes> recipes1;
@@ -41,10 +42,6 @@ public class ActivityEat extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         LinearLayout constraintLayout = findViewById(R.id.activity_main_2);
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
 
         ImageButton back = (ImageButton)findViewById(R.id.backward_button);
         back.setOnClickListener(new View.OnClickListener() {
@@ -132,13 +129,11 @@ public class ActivityEat extends AppCompatActivity {
     }
 
     void updateActivity(List<Recipes> list){
-        myrecyclerView = (RecyclerView)findViewById(R.id.recyclerView_id);
-
+        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView_id);
         myAdapter = new RecyclerViewAdapter(this,list);
-
-        myrecyclerView.setLayoutManager(new GridLayoutManager(this,1));
-
-        myrecyclerView.setAdapter(myAdapter);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setAdapter(myAdapter);
     }
 
     void updateRecipes(String category){

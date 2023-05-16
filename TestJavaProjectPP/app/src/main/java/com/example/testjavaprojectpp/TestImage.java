@@ -19,10 +19,10 @@ public class TestImage extends AppCompatActivity {
 
 
         Picasso.get()
-                .load("https://i.imgur.com/DvpvklR.png")
+                .load("https://storage.yandexcloud.net/nouti/инф%20про%205.jpg")
                 .fit()
                 .into(imageView);
-        Picasso.get().invalidate("https://i.imgur.com/DvpvklR.png");
+        Picasso.get().invalidate("https://storage.yandexcloud.net/nouti/инф%20про%205.jpg");
 //        Picasso.get().load("https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg").placeholder(R.drawable.borsch).error(R.drawable.borsch).into(imageView);
     }
 }
