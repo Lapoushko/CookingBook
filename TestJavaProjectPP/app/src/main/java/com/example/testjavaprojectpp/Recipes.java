@@ -6,10 +6,10 @@ public class Recipes {
     private String RecipeIngredients;
     private String RecipeMethodTitle;
     private String Recipe;
-    private int Thumbnail;
+    private String Thumbnail;
 
 
-    public Recipes(String name, String recipeIngredients, String recipeMethodTitle,String recipe, int thumbnail){
+    public Recipes(String name, String recipeIngredients, String recipeMethodTitle,String recipe, String thumbnail){
         RecipeName = name;
         RecipeIngredients = recipeIngredients;
         RecipeMethodTitle = recipeMethodTitle;
@@ -33,7 +33,7 @@ public class Recipes {
         return Recipe;
     }
 
-    public int getThumbnail(){
+    public String getThumbnail(){
         return Thumbnail;
     }
 }

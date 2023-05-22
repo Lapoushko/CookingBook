@@ -6,12 +6,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class RecipeActivity extends AppCompatActivity {
 
@@ -43,14 +46,17 @@ public class RecipeActivity extends AppCompatActivity {
         String Ingredients = intent.getExtras().getString("RecipeIngredients");
         String MethodTitle = intent.getExtras().getString("RecipeMethodTitle");
         String Recipe = intent.getExtras().getString("Recipe");
-        int RecipeImage = intent.getExtras().getInt("Thumbnail");
+        String RecipeImage = intent.getExtras().getString("Thumbnail");
 
         mRecipeName.setText(Title);
         mRecipeIngredients.setText(Ingredients);
         mRecipeMethodTitle.setText(MethodTitle);
         mRecipe.setText(Recipe);
-        mImage.setImageResource(RecipeImage);
-
+//        mImage.setImageResource(RecipeImage);
+//        mImage.setImageURI(Uri.parse(RecipeImage));
+        Picasso.get()
+                .load(RecipeImage)
+                .into(mImage);
         ImageButton back = (ImageButton)findViewById(R.id.backward_button);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

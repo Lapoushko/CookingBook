@@ -9,13 +9,17 @@ import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.testjavaprojectpp.EatActivity.ActivityEat;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -31,31 +35,21 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         ConstraintLayout constraintLayout = findViewById(R.id.second_layout);
-//        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-//        animationDrawable.setEnterFadeDuration(2000);
-//        animationDrawable.setExitFadeDuration(4000);
-//        animationDrawable.start();
-        tv = (TextView) findViewById(R.id.author_text);
-        String[] arrayStr = {
-                "Рецепты не работают, если вы не используете свое сердце. \n ©Дилан Джонс",
-               "Хороший повар похож на волшебницу, которая раздает счастье. \n ©Эльза Скиапарелли.",
-               "Вы то, что вы едите, так что ешьте хорошо. \n ©Шеф-повар Франческо.",
-                "Кухня жесткая и формирует невероятно сильных персонажей. \n ©Гордон Рэмси",
-                "Рецепт не имеет души. Вы, как повар, должны добавить свою душу в рецепт. \n ©Томас Келлер.",
-                "Наслаждение блюдом должно быть незабываемым. \n ©Ален Дюкасс.",
-                "Еда - один из самых важных аспектов жизни. \n ©Марко Пьер Уайт.",
-                "Приготовление пищи - это как рисование или написание песни. \n ©Вольфганг Па",
-                "Иногда в самые глубокие моменты нет слов. Есть только еда. \n ©Рой Чой",
-                "Повара являются лидерами в своем маленьком мире. \n ©Эрик Риперт",
-                "С едой можно играть. \n ©Эмерил Лагассе",
-                "Если бы Бог хотел, чтобы мы следовали рецептам, он не дал бы нам бабушек. \n ©Линда Хенли",
-                "Лучшие блюда самые простые. \n ©Аугуст Эскофье"
 
-        };
-        Random r = new Random();
-        String textAuthor = arrayStr[r.nextInt(arrayStr.length)];
-        Typewriter writer = new Typewriter(tv);
-        writer.animateText(textAuthor);
+        Animation anim = AnimationUtils.loadAnimation(this,R.anim.anim_menu_circle);
+        ImageView btn = (ImageView) findViewById(R.id.image_icon_circle);
+        btn.startAnimation(anim);
+
+        tv = (TextView) findViewById(R.id.author_text);
+        newTypeWriterText();
+//        tv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Typewriter writer = new Typewriter(tv);
+//                writer.stopWriting();
+//                newTypeWriterText();
+//            }
+//        });
 
         SearchView sv = (SearchView) findViewById(R.id.searcher);
 
@@ -136,7 +130,7 @@ public class SecondActivity extends AppCompatActivity {
         startActivity(intent2);
     }
     public void clickBreakfast(View view){
-        Intent intent2 = new Intent(SecondActivity.this, TestImage.class);
+        Intent intent2 = new Intent(SecondActivity.this, ActivityEat.class);
         nameCategory = "Завтрак";
         startActivity(intent2);
     }
@@ -150,6 +144,39 @@ public class SecondActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    private Runnable mMyRunnable = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            //Change state here
+        }
+    };
+
+    private void newTypeWriterText(){
+        String[] arrayStr = {
+                "Рецепты не работают, если вы не используете свое сердце. \n ©Дилан Джонс",
+                "Хороший повар похож на волшебницу, которая раздает счастье. \n ©Эльза Скиапарелли.",
+                "Вы то, что вы едите, так что ешьте хорошо. \n ©Шеф-повар Франческо.",
+                "Кухня жесткая и формирует невероятно сильных персонажей. \n ©Гордон Рэмси",
+                "Рецепт не имеет души. Вы, как повар, должны добавить свою душу в рецепт. \n ©Томас Келлер.",
+                "Наслаждение блюдом должно быть незабываемым. \n ©Ален Дюкасс.",
+                "Еда - один из самых важных аспектов жизни. \n ©Марко Пьер Уайт.",
+                "Приготовление пищи - это как рисование или написание песни. \n ©Вольфганг Па",
+                "Иногда в самые глубокие моменты нет слов. Есть только еда. \n ©Рой Чой",
+                "Повара являются лидерами в своем маленьком мире. \n ©Эрик Риперт",
+                "С едой можно играть. \n ©Эмерил Лагассе",
+                "Если бы Бог хотел, чтобы мы следовали рецептам, он не дал бы нам бабушек. \n ©Линда Хенли",
+                "Лучшие блюда самые простые. \n ©Аугуст Эскофье"
+
+        };
+
+        Random r = new Random();
+        String textAuthor = arrayStr[r.nextInt(arrayStr.length)];
+        Typewriter writer = new Typewriter(tv);
+        writer.animateText(textAuthor);
+    }
+
     public class Typewriter {
 
         private String sText = new String();
@@ -157,7 +184,7 @@ public class SecondActivity extends AppCompatActivity {
         private long mDelay = 50;
 
         TextView textView;
-
+        Handler myHandler = new Handler();
         public Typewriter(TextView tView) {
             textView = tView;
         }
@@ -168,8 +195,9 @@ public class SecondActivity extends AppCompatActivity {
 
             textView.setText("");
 
-            new Handler().removeCallbacks(characterAdder);
-            new Handler().postDelayed(characterAdder, mDelay);
+            myHandler.removeCallbacks(characterAdder);
+            myHandler.postDelayed(characterAdder, mDelay);
+
         }
 
         private Runnable characterAdder = new Runnable() {

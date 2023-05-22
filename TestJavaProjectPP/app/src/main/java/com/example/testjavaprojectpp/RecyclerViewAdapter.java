@@ -3,6 +3,7 @@ package com.example.testjavaprojectpp;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,7 +42,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull final MyHolder myHolder, int i) {
 
         myHolder.recipeTitle.setText(mData.get(i).getRecipeName());
-        myHolder.img_recipe_thumbnail.setImageResource(mData.get(i).getThumbnail());
+        Picasso.get()
+                .load(mData.get(i).getThumbnail())
+                .into(myHolder.img_recipe_thumbnail);
+//        myHolder.img_recipe_thumbnail.setImageURI(Uri.parse(mData.get(i).getThumbnail()));
         myHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

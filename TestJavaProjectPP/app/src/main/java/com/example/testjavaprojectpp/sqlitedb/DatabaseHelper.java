@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -33,21 +34,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "RecipeDB.db", null, 2);
+        super(context, "RecipeDB.db", null, 5);
         if (android.os.Build.VERSION.SDK_INT >= 17)
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
         else
             DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
         this.mContext = context;
-
         copyDataBase();
-
         this.getReadableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         String createTableStatement = "CREATE TABLE " + RECIPES_TABLE + " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + RECIPE_NAME + " TEXT, " + RECIPE_INGREDIENTS + " TEXT, " +
                 RECIPE + " TEXT, " + CATEGORY + " TEXT, " + IMAGE_NAME + " TEXT)";
         db.execSQL(createTableStatement);
@@ -55,7 +53,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
     }
 
     public boolean addOne(RecipeModel recipeModel){
@@ -82,7 +79,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(queryString, null);
-
         if (cursor.moveToFirst()) {
             do {
                 int recipeID = cursor.getInt(0);
@@ -92,11 +88,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String category = cursor.getString(4);
                 String imageName = "";
                 if (cursor.getString(5).contains(".")) {
-                    imageName = cursor.getString(5).substring(0, cursor.getString(5).indexOf('.'));
+//                    imageName = cursor.getString(5).substring(0, cursor.getString(5).indexOf('.'));
+                    imageName = cursor.getString(5);
                 } else {
                     imageName = cursor.getString(5);
                 }
-
+                System.out.println(imageName);
                 RecipeModel recipeModel = new RecipeModel(recipeID, recipeName, recipeIngredients, recipe, category, imageName);
                 if (recipeModel.getCategory().equals(categoryRecipe)){
                     returnList.add(recipeModel);
@@ -124,7 +121,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String category = cursor.getString(4);
                 String imageName = "";
                 if (cursor.getString(5).contains(".")) {
-                    imageName = cursor.getString(5).substring(0, cursor.getString(5).indexOf('.'));
+                    imageName = cursor.getString(5);
+//                    imageName = cursor.getString(5).substring(0, cursor.getString(5).indexOf('.'));
                 } else {
                     imageName = cursor.getString(5);
                 }

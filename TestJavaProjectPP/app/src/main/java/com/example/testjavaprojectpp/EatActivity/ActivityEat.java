@@ -150,12 +150,13 @@ public class ActivityEat extends AppCompatActivity {
         for (int i = 0; i < everyone.size();i++){
 
             String name= everyone.get(i).getImageName();
-            int id = getResources().getIdentifier(name, "drawable", getPackageName());
+//            String id =
+//            int id = getResources().getIdentifier(name, "drawable", getPackageName());
 
             recipes1.add(new Recipes(everyone.get(i).getRecipeName(),
                     everyone.get(i).getRecipeIngredients().replace(";","\n"),
                     "Метод",
-                    everyone.get(i).getRecipe().replace(";","\n"),id));
+                    everyone.get(i).getRecipe().replace(";","\n"),everyone.get(i).getImageName()));
         }
     }
 

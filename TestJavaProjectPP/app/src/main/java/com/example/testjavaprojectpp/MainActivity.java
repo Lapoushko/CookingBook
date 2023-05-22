@@ -28,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
         btn.startAnimation(anim);
 
         ConstraintLayout constraintLayout = findViewById(R.id.main_layout);
-//        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-//        animationDrawable.setEnterFadeDuration(5000);
-//        animationDrawable.setExitFadeDuration(4000);
-//        animationDrawable.start();
 
         Thread thread = new Thread() {
             @Override
