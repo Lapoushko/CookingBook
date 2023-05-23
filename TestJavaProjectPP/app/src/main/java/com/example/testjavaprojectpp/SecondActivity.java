@@ -5,23 +5,18 @@ import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.testjavaprojectpp.EatActivity.ActivityEat;
+import com.example.testjavaprojectpp.spinners.NewRecipeActivity;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity {

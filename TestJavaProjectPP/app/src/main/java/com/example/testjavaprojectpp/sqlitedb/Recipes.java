@@ -1,4 +1,4 @@
-package com.example.testjavaprojectpp;
+package com.example.testjavaprojectpp.sqlitedb;
 
 public class Recipes {
 

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -161,5 +162,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private boolean checkDataBase() {
         File dbFile = new File(DB_PATH + DB_NAME);
         return dbFile.exists();
+    }
+
+    public int getLastIdFromMyTable()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteStatement st = db.compileStatement("SELECT last_insert_rowid() from " + RECIPES_TABLE);
+        return (int) st.simpleQueryForLong();
     }
 }

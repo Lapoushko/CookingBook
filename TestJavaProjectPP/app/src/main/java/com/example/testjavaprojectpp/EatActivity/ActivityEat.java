@@ -2,9 +2,8 @@ package com.example.testjavaprojectpp.EatActivity;
 
 import static com.example.testjavaprojectpp.SecondActivity.nameCategory;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -14,8 +13,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.testjavaprojectpp.spinners.NewRecipeActivity;
 import com.example.testjavaprojectpp.R;
-import com.example.testjavaprojectpp.Recipes;
+import com.example.testjavaprojectpp.sqlitedb.Recipes;
 import com.example.testjavaprojectpp.RecyclerViewAdapter;
 import com.example.testjavaprojectpp.sqlitedb.DatabaseHelper;
 import com.example.testjavaprojectpp.sqlitedb.RecipeModel;
@@ -149,15 +149,16 @@ public class ActivityEat extends AppCompatActivity {
 
         for (int i = 0; i < everyone.size();i++){
 
-            String name= everyone.get(i).getImageName();
-//            String id =
-//            int id = getResources().getIdentifier(name, "drawable", getPackageName());
-
             recipes1.add(new Recipes(everyone.get(i).getRecipeName(),
                     everyone.get(i).getRecipeIngredients().replace(";","\n"),
                     "Метод",
                     everyone.get(i).getRecipe().replace(";","\n"),everyone.get(i).getImageName()));
         }
+    }
+
+    public void clickAddRecipe(View view){
+        Intent intent2 = new Intent(ActivityEat.this, NewRecipeActivity.class);
+        startActivity(intent2);
     }
 
     private class CustomComparatorLetters implements Comparator<Recipes>{

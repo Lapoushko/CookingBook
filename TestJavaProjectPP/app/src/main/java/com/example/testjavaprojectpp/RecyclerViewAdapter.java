@@ -1,9 +1,7 @@
 package com.example.testjavaprojectpp;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.testjavaprojectpp.sqlitedb.Recipes;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -44,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         myHolder.recipeTitle.setText(mData.get(i).getRecipeName());
         Picasso.get()
                 .load(mData.get(i).getThumbnail())
+                .placeholder(R.drawable.back_without_int)
                 .into(myHolder.img_recipe_thumbnail);
 //        myHolder.img_recipe_thumbnail.setImageURI(Uri.parse(mData.get(i).getThumbnail()));
         myHolder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -75,12 +75,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-
             recipeTitle = (TextView)itemView.findViewById(R.id.recipe_text);
             img_recipe_thumbnail = (ImageView)itemView.findViewById(R.id.recipe_img_id);
             cardView = (CardView)itemView.findViewById(R.id.cardview_id);
-
-
         }
     }
 }

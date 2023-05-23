@@ -56,6 +56,7 @@ public class RecipeActivity extends AppCompatActivity {
 //        mImage.setImageURI(Uri.parse(RecipeImage));
         Picasso.get()
                 .load(RecipeImage)
+                .placeholder(R.drawable.back_without_int)
                 .into(mImage);
         ImageButton back = (ImageButton)findViewById(R.id.backward_button);
         back.setOnClickListener(new View.OnClickListener() {
