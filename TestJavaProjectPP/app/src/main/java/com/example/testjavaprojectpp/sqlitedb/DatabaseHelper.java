@@ -94,7 +94,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 } else {
                     imageName = cursor.getString(5);
                 }
-                System.out.println(imageName);
                 RecipeModel recipeModel = new RecipeModel(recipeID, recipeName, recipeIngredients, recipe, category, imageName);
                 if (recipeModel.getCategory().equals(categoryRecipe)){
                     returnList.add(recipeModel);
@@ -167,7 +166,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int getLastIdFromMyTable()
     {
         SQLiteDatabase db = this.getReadableDatabase();
-        SQLiteStatement st = db.compileStatement("SELECT last_insert_rowid() from " + RECIPES_TABLE);
-        return (int) st.simpleQueryForLong();
+        Cursor cursor = db.rawQuery("SELECT  * FROM " + RECIPES_TABLE, null);
+        int id = 0;
+        if(cursor.moveToLast()){
+            //name = cursor.getString(column_index);//to get other values
+           id = cursor.getInt(0);//to get id, 0 is the column index
+        }
+        return id;
     }
 }

@@ -1,39 +1,28 @@
 package com.example.testjavaprojectpp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.media.Image;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 public class RecipeActivity extends AppCompatActivity {
-
     private TextView mRecipeName;
     private TextView mRecipeIngredients;
     private TextView mRecipeMethodTitle;
     private TextView mRecipe;
     private ImageView mImage;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-
-//        LinearLayout constraintLayout = findViewById(R.id.activity_recipe);
-////        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-////        animationDrawable.setEnterFadeDuration(2000);
-////        animationDrawable.setExitFadeDuration(2000);
-////        animationDrawable.start();
 
         mRecipeName = (TextView)findViewById(R.id.text_recipe);
         mRecipeIngredients = (TextView)findViewById(R.id.ingredients);
@@ -52,12 +41,20 @@ public class RecipeActivity extends AppCompatActivity {
         mRecipeIngredients.setText(Ingredients);
         mRecipeMethodTitle.setText(MethodTitle);
         mRecipe.setText(Recipe);
-//        mImage.setImageResource(RecipeImage);
-//        mImage.setImageURI(Uri.parse(RecipeImage));
-        Picasso.get()
-                .load(RecipeImage)
-                .placeholder(R.drawable.back_without_int)
-                .into(mImage);
+
+        Cache saveInCache = new Cache();
+        Bitmap bitmap = (Bitmap)Cache.getInstance().retrieveBitmapFromCache(Title);
+        if (!RecipeImage.contains("https")){
+//            mImage.setImageURI(Uri.parse(RecipeImage));
+//            mImage.setImageBitmap(bitmap);
+            mImage.setImageBitmap(saveInCache.loadImageBitmap(getApplicationContext(),Title+".jpeg"));
+        }
+        else {
+            Picasso.get()
+                    .load(RecipeImage)
+                    .error(R.drawable.back_without_int)
+                    .into(mImage);
+        }
         ImageButton back = (ImageButton)findViewById(R.id.backward_button);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

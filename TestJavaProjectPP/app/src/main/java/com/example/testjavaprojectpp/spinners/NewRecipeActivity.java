@@ -1,35 +1,32 @@
 package com.example.testjavaprojectpp.spinners;
-import android.app.Application;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.LruCache;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.testjavaprojectpp.R;
+import com.example.testjavaprojectpp.Cache;
 import com.example.testjavaprojectpp.sqlitedb.DatabaseHelper;
 import com.example.testjavaprojectpp.sqlitedb.RecipeModel;
 import com.google.android.material.button.MaterialButton;
 
-import java.util.concurrent.TimeUnit;
 public class NewRecipeActivity extends AppCompatActivity {
-
+    ImageButton imageButton;
     Spinner spinner;
+    private LruCache<String, Bitmap> mMemoryCache;
+    Uri uri;
+    boolean isChangedImage = false;
+
     String[] spinnerValue = {
             "Горячее",
             "Суп",
@@ -39,13 +36,15 @@ public class NewRecipeActivity extends AppCompatActivity {
             "Напитки",
             "Завтрак",
             "Закуски",
-            "Напитки"
+            "Пицца"
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
+
+
         ImageButton back = (ImageButton)findViewById(R.id.backward_button);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,23 +74,65 @@ public class NewRecipeActivity extends AppCompatActivity {
         EditText listIngr = (EditText)findViewById(R.id.plaintext_listingr);
         EditText method = (EditText)findViewById(R.id.plaintext_method);
         DatabaseHelper db = new DatabaseHelper(NewRecipeActivity.this);
+        imageButton = (ImageButton)findViewById(R.id.recipe_image_add_button);
+        Cache saveInCache = new Cache();
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageChooser();
+            }
+        });
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String listMessage = listIngr.getText().toString();
-                Toast.makeText(NewRecipeActivity.this, listMessage, Toast.LENGTH_SHORT).show();
-                String methodMessage = method.getText().toString();
-                Toast.makeText(NewRecipeActivity.this, methodMessage, Toast.LENGTH_SHORT).show();
-                Toast.makeText(NewRecipeActivity.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                RecipeModel recipeModel = new RecipeModel(db.getLastIdFromMyTable()+1,nameRecipe.toString(),
-                        listIngr.toString(),
-                        method.toString(),
-                        spinner.getSelectedItem().toString(),
-                        getResources().getDrawable(R.drawable.back_without_int).toString());
-                db.addOne(recipeModel);
+                if (nameRecipe.getText().toString() != "" && listIngr.getText().toString() != "" && method.getText().toString() != "" && spinner.getSelectedItem().toString() != "" && isChangedImage){
+                    int id = db.getLastIdFromMyTable()+1;
+                    String nameRecipeMessage = nameRecipe.getText().toString();
+                    String ingrMessage = listIngr.getText().toString();
+                    String methodMessage = method.getText().toString();
+                    String category = spinner.getSelectedItem().toString();
+                    System.out.println(db.getLastIdFromMyTable());
+
+                        RecipeModel recipeModel = new RecipeModel(id,
+                                nameRecipeMessage,
+                                ingrMessage,
+                                methodMessage,
+                                category,
+                                uri.toString());
+                        db.addOne(recipeModel);
+
+                        Bitmap bitmap = ((BitmapDrawable)imageButton.getDrawable()).getBitmap();
+        //                Cache.getInstance().getLru().put(nameRecipeMessage, bitmap);
+                        Cache.getInstance().saveImage(getApplicationContext(),bitmap,nameRecipeMessage+".jpeg");
+
+                }else{
+                    onBackPressed();
+                }
             }
         });
-
-
     }
+    void imageChooser() {
+
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(i, "Select Picture"), 200);
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            if (requestCode == 200) {
+                Uri selectedImageUri = data.getData();
+                if (null != selectedImageUri) {
+                    isChangedImage = true;
+                    imageButton.setImageURI(selectedImageUri);
+                    uri = selectedImageUri;
+                }
+            }
+        }
+    }
+
+
 }

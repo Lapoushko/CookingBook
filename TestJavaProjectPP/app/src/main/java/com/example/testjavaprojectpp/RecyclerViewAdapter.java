@@ -2,6 +2,10 @@ package com.example.testjavaprojectpp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +14,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.collection.LruCache;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testjavaprojectpp.sqlitedb.Recipes;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyHolder> {
 
     private Context mContext;
     private List<Recipes> mData;
-
     public RecyclerViewAdapter(Context mContext, List<Recipes> mData){
         this.mContext = mContext;
         this.mData = mData;
@@ -39,13 +44,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final MyHolder myHolder, int i) {
-
         myHolder.recipeTitle.setText(mData.get(i).getRecipeName());
-        Picasso.get()
-                .load(mData.get(i).getThumbnail())
-                .placeholder(R.drawable.back_without_int)
-                .into(myHolder.img_recipe_thumbnail);
-//        myHolder.img_recipe_thumbnail.setImageURI(Uri.parse(mData.get(i).getThumbnail()));
+        Cache saveInCache = new Cache();
+//        Bitmap bitmap = (Bitmap)Cache.getInstance().getLru().get(mData.get(i).getRecipeName());
+        Bitmap bitmap = (Bitmap)Cache.getInstance().retrieveBitmapFromCache(mData.get(i).getRecipeName());
+        if (!mData.get(i).getThumbnail().contains("https")){
+//            myHolder.img_recipe_thumbnail.setImageURI(Uri.parse(mData.get(i).getThumbnail()));
+//            myHolder.img_recipe_thumbnail.setImageBitmap(bitmap);
+            myHolder.img_recipe_thumbnail.setImageBitmap(saveInCache.loadImageBitmap(mContext, mData.get(i).getRecipeName()+".jpeg"));
+
+            File file            = mContext.getFileStreamPath("my_image.jpeg");
+            String imageFullPath = file.getAbsolutePath();
+            System.out.println(imageFullPath);
+
+            mContext.getFileStreamPath("my_image.jpeg");
+            if (file.exists()) Log.d("file", "my_image.jpeg exists!");
+
+        }
+        else {
+            Picasso.get()
+                    .load(mData.get(i).getThumbnail())
+//                .error(R.drawable.back_without_int)
+                    .into(myHolder.img_recipe_thumbnail);
+        }
         myHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
