@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.LruCache;
 import android.view.View;
 import android.widget.AdapterView;
@@ -54,6 +55,8 @@ public class NewRecipeActivity extends AppCompatActivity {
         });
         spinner = (Spinner)findViewById(R.id.spinner);
         SpinnerAdapter adapter = new SpinnerAdapter(NewRecipeActivity.this, android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(R.layout.color_spinner_layout);
+        spinner.setAdapter(adapter);
         adapter.addAll(spinnerValue);
         adapter.add("Выберите категорию блюда");
         spinner.setAdapter(adapter);
@@ -85,28 +88,31 @@ public class NewRecipeActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nameRecipe.getText().toString() != "" && listIngr.getText().toString() != "" && method.getText().toString() != "" && spinner.getSelectedItem().toString() != "" && isChangedImage){
+//                if (nameRecipe.getText().toString() != "" && listIngr.getText().toString() != "" && method.getText().toString() != "" && spinner.getSelectedItem().toString() != "" && isChangedImage){
                     int id = db.getLastIdFromMyTable()+1;
                     String nameRecipeMessage = nameRecipe.getText().toString();
                     String ingrMessage = listIngr.getText().toString();
                     String methodMessage = method.getText().toString();
                     String category = spinner.getSelectedItem().toString();
                     System.out.println(db.getLastIdFromMyTable());
+                    System.out.println(nameRecipeMessage);
+                    if (!(TextUtils.isEmpty(ingrMessage)) && !(TextUtils.isEmpty(nameRecipeMessage))&& !(TextUtils.isEmpty(methodMessage))&& !(TextUtils.isEmpty(category))){
+                    RecipeModel recipeModel = new RecipeModel(id,
+                            nameRecipeMessage,
+                            ingrMessage,
+                            methodMessage,
+                            category,
+                            uri.toString());
+                    db.addOne(recipeModel);
+                    System.out.println("Всё так");
 
-                        RecipeModel recipeModel = new RecipeModel(id,
-                                nameRecipeMessage,
-                                ingrMessage,
-                                methodMessage,
-                                category,
-                                uri.toString());
-                        db.addOne(recipeModel);
-
-                        Bitmap bitmap = ((BitmapDrawable)imageButton.getDrawable()).getBitmap();
-        //                Cache.getInstance().getLru().put(nameRecipeMessage, bitmap);
-                        Cache.getInstance().saveImage(getApplicationContext(),bitmap,nameRecipeMessage+".jpeg");
+                    Bitmap bitmap = ((BitmapDrawable)imageButton.getDrawable()).getBitmap();
+                    Cache.getInstance().saveImage(getApplicationContext(),bitmap,nameRecipeMessage+".jpeg");
+                    onBackPressed();
 
                 }else{
-                    onBackPressed();
+                        System.out.println("Беда");
+                        Toast.makeText(NewRecipeActivity.this, "Неправильный ввод", Toast.LENGTH_SHORT).show();
                 }
             }
         });

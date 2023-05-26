@@ -21,120 +21,131 @@
             android:orientation="vertical">
 
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="314dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="268dp"
                 android:layout_margin="8dp">
 
+                <!--                <com.google.android.material.imageview.ShapeableImageView-->
+                <!--                    android:id="@+id/recipe_img_id"-->
+                <!--                    android:layout_width="186dp"-->
+                <!--                    android:layout_height="116dp"-->
+                <!--                    android:layout_alignParentStart="true"-->
+                <!--                    android:layout_alignParentTop="true"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_alignParentBottom="true"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:layout_marginStart="105dp"-->
+                <!--                    android:layout_marginLeft="0dp"-->
+                <!--                    android:layout_marginTop="116dp"-->
+                <!--                    android:layout_marginEnd="103dp"-->
+                <!--                    android:layout_marginBottom="82dp"-->
+                <!--                    android:adjustViewBounds="true"-->
+                <!--                    android:background="@drawable/add_recipe_back"-->
+                <!--                    android:scaleType="centerCrop"-->
+                <!--                    app:shapeAppearanceOverlay="@style/roundedMenuPanel" />-->
+
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginBottom="46dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:text="Добавьте свой рецепт"
                     android:textColor="@color/pink"
-                    android:textSize="25sp">
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.505"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.113">
 
                 </TextView>
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="189dp"
+                    android:id="@+id/shapeableImageView"
+                    android:layout_width="391dp"
+                    android:layout_height="175dp"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="80dp"
                     android:adjustViewBounds="true"
                     android:background="#F8EAEAEA"
                     android:scaleType="centerCrop"
-                    app:shapeAppearanceOverlay="@style/roundedMenuPanel" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView"
 
-                <!--                <com.google.android.material.imageview.ShapeableImageView-->
-<!--                    android:id="@+id/recipe_img_id"-->
-<!--                    android:layout_width="186dp"-->
-<!--                    android:layout_height="116dp"-->
-<!--                    android:layout_alignParentStart="true"-->
-<!--                    android:layout_alignParentTop="true"-->
-<!--                    android:layout_alignParentEnd="true"-->
-<!--                    android:layout_alignParentBottom="true"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginStart="105dp"-->
-<!--                    android:layout_marginLeft="0dp"-->
-<!--                    android:layout_marginTop="116dp"-->
-<!--                    android:layout_marginEnd="103dp"-->
-<!--                    android:layout_marginBottom="82dp"-->
-<!--                    android:adjustViewBounds="true"-->
-<!--                    android:background="@drawable/add_recipe_back"-->
-<!--                    android:scaleType="centerCrop"-->
-<!--                    app:shapeAppearanceOverlay="@style/roundedMenuPanel" />-->
+                    app:layout_constraintVertical_bias="0.811"
+                    app:shapeAppearanceOverlay="@style/roundedMenuPanel" />
 
                 <ImageButton
                     android:id="@+id/recipe_image_add_button"
-                    android:layout_width="372dp"
-                    android:layout_height="145dp"
+                    android:layout_width="207dp"
+                    android:layout_height="125dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="43dp"
-                    android:layout_marginTop="95dp"
-                    android:layout_marginEnd="49dp"
-                    android:layout_marginBottom="74dp"
                     android:width="200dp"
                     android:height="120dp"
                     android:background="@drawable/add_recipe_back"
-                    app:layout_constraintVertical_bias="0.511" />
+                    app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
+                    app:layout_constraintEnd_toEndOf="@+id/shapeableImageView"
+                    app:layout_constraintHeight_percent="0.25"
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
+                    app:layout_constraintTop_toTopOf="@+id/shapeableImageView"
+                    app:layout_constraintVertical_bias="0.453"
+                    app:layout_constraintWidth_percent="0.25" />
 
                 <ImageButton
                     android:id="@+id/backward_button"
                     android:layout_width="17dp"
                     android:layout_height="28dp"
                     android:layout_margin="17dp"
-                    android:background="@drawable/backward_button"></ImageButton>
+                    android:background="@drawable/backward_button"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="@+id/textView"
+                    app:layout_constraintVertical_bias="0.636"></ImageButton>
 
 
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="523dp"
+                android:layout_height="530dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/textview_border"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/plaintext_name_recipe"
-                    android:layout_width="356dp"
-                    android:layout_height="48dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="76dp"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/textview_border"
                     android:fontFamily="@font/inter_light"
                     android:gravity="start"
-                    android:layout_marginTop="20dp"
-                    android:hint="  Название рецепта: "
+                    android:hint="Название рецепта: "
+                    android:padding="10dp"
                     android:textColor="@color/pink"
                     android:textColorHint="@color/pink"></EditText>
+
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:layout_margin="20dp"
                     android:background="@drawable/textview_border"
-                    android:spinnerMode="dialog"></Spinner>
+                    android:spinnerMode="dialog">
 
-                <EditText
-                    android:id="@+id/plaintext_listingr"
-                    android:layout_width="356dp"
-                    android:layout_height="137dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:background="@drawable/textview_border"
-                    android:fontFamily="@font/inter_light"
-                    android:gravity="start"
-                    android:hint="  Список ингредиентов(через запятую): "
-                    android:textColor="@color/pink"
-                    android:textColorHint="@color/pink">
+                </Spinner>
 
-                </EditText>
                 <!--                <TextView-->
                 <!--                    android:id="@+id/text_recipe"-->
                 <!--                    android:layout_width="match_parent"-->
@@ -149,14 +160,31 @@
                 <!--                    android:textStyle="bold" />-->
 
                 <EditText
-                    android:id="@+id/plaintext_method"
-                    android:layout_width="356dp"
-                    android:layout_height="116dp"
-                    android:layout_margin="20dp"
+                    android:id="@+id/plaintext_listingr"
+                    android:layout_width="match_parent"
+                    android:layout_height="106dp"
+                    android:layout_marginHorizontal="20dp"
                     android:background="@drawable/textview_border"
                     android:fontFamily="@font/inter_light"
                     android:gravity="start"
-                    android:hint="  Метод приготовления: "
+                    android:padding="10dp"
+                    android:hint="Список ингредиентов(через запятую): "
+                    android:textColor="@color/pink"
+                    android:textColorHint="@color/pink">
+
+                </EditText>
+
+                <EditText
+                    android:id="@+id/plaintext_method"
+                    android:layout_width="match_parent"
+                    android:layout_height="108dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/textview_border"
+                    android:textColorHint="@color/gray"
+                    android:fontFamily="@font/inter_light"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:hint="Метод приготовления: "
                     android:textColor="@color/gray">
 
                 </EditText>
