@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -44,5 +45,11 @@ public class MainActivity extends AppCompatActivity {
         };
 
         thread.start();;
+    }
+
+    public void clickPrivacyPolicy(View view){
+        Intent openURL = new Intent(android.content.Intent.ACTION_VIEW);
+        openURL.setData(Uri.parse("https://github.com/Lapoushko/CookingBook/blob/main/TestJavaProjectPP/Privacy%20policy.txt"));
+        startActivity(openURL);
     }
 }

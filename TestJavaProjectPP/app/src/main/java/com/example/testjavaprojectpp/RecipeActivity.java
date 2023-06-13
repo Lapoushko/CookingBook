@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -40,7 +44,17 @@ public class RecipeActivity extends AppCompatActivity {
         mRecipeName.setText(Title);
         mRecipeIngredients.setText(Ingredients);
         mRecipeMethodTitle.setText(MethodTitle);
-        mRecipe.setText(Recipe);
+
+        final SpannableStringBuilder sb = new SpannableStringBuilder(Recipe);
+
+        String rec = Recipe.split("\n")[0];
+
+        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
+        final StyleSpan iss = new StyleSpan(Typeface.NORMAL); //Span to make text italic
+        sb.setSpan(bss, 0, rec.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make first 4 characters Bold
+        sb.setSpan(iss, rec.length(), Recipe.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make last 2 characters Italic
+
+        mRecipe.setText(sb);
 
         Cache saveInCache = new Cache();
         Bitmap bitmap = (Bitmap)Cache.getInstance().retrieveBitmapFromCache(Title);
